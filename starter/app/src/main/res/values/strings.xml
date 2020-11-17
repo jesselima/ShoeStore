@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">ShoeStore</string>
+    <string name="app_name">Shoe Store</string>
+    <string name="login">Login</string>
+    <string name="welcome">Welcome</string>
+    <string name="products_feed">Products Feed</string>
+    <string name="product_details">Product Details</string>
+    <!-- Dummy data for example buttons -->
+    <string name="welcomeButtonOk">WELCOME SCREEN</string>
+    <string name="instructionButtonOk">INSTRUCTIONS SCREEN</string>
+    <string name="feedButtonOk">FEED SCREEN</string>
+    <string name="actionBack">PRODUCT DETAILS SCREEN - BACK</string>
+    <string name="instructions">Instructions</string>
 </resources>
