@@ -1,15 +1,15 @@
 package com.udacity.shoestore.productdetails
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
+import com.udacity.shoestore.core.extensions.showWithFadeIn
 import com.udacity.shoestore.databinding.FragmentProductDetailsBinding
-import com.udacity.shoestore.login.LoginFragmentDirections
 
 
 class ProductDetailsFragment : Fragment() {
@@ -27,10 +27,15 @@ class ProductDetailsFragment : Fragment() {
             container,
             false
         )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.productDetailsImageBackAction.showWithFadeIn()
         setupViewModel()
         setupObservers()
         setupListeners()
-        return binding.root
     }
 
     private fun setupViewModel() {
@@ -43,8 +48,15 @@ class ProductDetailsFragment : Fragment() {
 
     private fun setupListeners() {
         binding.buttonActionFromProductDetails.setOnClickListener {
+            binding.productDetailsImageBackAction.visibility = View.GONE
             findNavController().navigate(
                 ProductDetailsFragmentDirections.actionProductDetailsFragmentToProductsFeedFragment()
+            )
+        }
+        binding.productDetailsImageBackAction.setOnClickListener {
+            it.visibility = View.GONE
+            findNavController().navigate(
+                    ProductDetailsFragmentDirections.actionProductDetailsFragmentToProductsFeedFragment()
             )
         }
     }

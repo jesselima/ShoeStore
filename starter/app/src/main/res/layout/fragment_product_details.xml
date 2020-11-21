@@ -8,6 +8,18 @@
         android:layout_height="match_parent"
         tools:context=".productdetails.ProductDetailsFragment">
 
+        <ImageView
+            android:id="@+id/productDetailsImageBackAction"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/margin_default"
+            android:visibility="gone"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
-            android:text="Go Back to Feed"
+            android:text="@string/go_back_to_feed"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -10,4 +10,10 @@
     <string name="feedButtonOk">FEED SCREEN</string>
     <string name="actionBack">PRODUCT DETAILS SCREEN - BACK</string>
     <string name="instructions">Instructions</string>
+    <string name="back">Back</string>
+    <string name="go_back_to_feed">Go Back to Feed</string>
+    <string name="go_to_welcome">Go to Welcome</string>
+    <string name="go_to_feed">Go to Feed</string>
+    <string name="go_to_instructions">Go to Instructions</string>
+    <string name="go_to_product_details">Go to Product Details</string>
 </resources>
