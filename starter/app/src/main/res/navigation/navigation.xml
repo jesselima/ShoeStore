@@ -62,7 +62,7 @@
         <action
             android:id="@+id/action_productsFeedFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment"
-            app:enterAnim="@anim/slide_in_right"
+            app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out_left"
             app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
@@ -78,11 +78,11 @@
         <action
             android:id="@+id/action_productDetailsFragment_to_productsFeedFragment"
             app:destination="@id/productsFeedFragment"
-            app:enterAnim="@anim/slide_in_left"
+            app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out_right"
             app:launchSingleTop="true"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/fade_out"
+            app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/productsFeedFragment"
             app:popUpToInclusive="true" />
     </fragment>
