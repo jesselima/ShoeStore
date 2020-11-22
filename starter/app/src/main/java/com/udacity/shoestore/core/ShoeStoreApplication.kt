@@ -1,6 +1,7 @@
 package com.udacity.shoestore.core
 
 import android.app.Application
+import com.udacity.shoestore.di.GlobalInjectableDependencies
 import timber.log.Timber
 
 /**
@@ -11,5 +12,6 @@ class ShoeStoreApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        GlobalInjectableDependencies(this).initKoin()
     }
 }

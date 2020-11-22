@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.udacity.shoestore"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -41,11 +41,19 @@ dependencies {
     implementation "com.google.android.material:material:$version_material"
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    implementation project(":datasources:local")
+
+    // Koin for Dependency Injection
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
     // NavigationDependencies
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation_ktx"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation_ktx"
     implementation "com.jakewharton.timber:timber:$version_timber"
     testImplementation "junit:junit:$version_junit"
-    androidTestImplementation "androidx.test.ext:junit:$version_junit_android"
+    androidTestImplementation "androidx.test.ext:junit:$version_junit_androix"
     androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
 }
