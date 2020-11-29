@@ -10,11 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.core.extensions.showWithFadeIn
 import com.udacity.shoestore.databinding.FragmentProductDetailsBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 
 class ProductDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentProductDetailsBinding
+    private val viewModel by viewModel<ProductDetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,17 +36,14 @@ class ProductDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.productDetailsImageBackAction.showWithFadeIn()
-        setupViewModel()
         setupObservers()
         setupListeners()
     }
 
-    private fun setupViewModel() {
-        // TODO("not implemented")
-    }
-
     private fun setupObservers() {
-        // TODO("not implemented")
+        viewModel.shoeLiveData.observe(viewLifecycleOwner, { shoe ->
+            Timber.i(shoe.toString())
+        })
     }
 
     private fun setupListeners() {
