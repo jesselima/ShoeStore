@@ -88,6 +88,13 @@
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/productsFeedFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_productEditorFragment"
+            app:destination="@id/productEditorFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/productEditorFragment"
+        android:name="com.udacity.shoestore.producteditor.ProductEditorFragment"
+        android:label="ProductEditorFragment" />
 
 </navigation>

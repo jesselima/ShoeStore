@@ -9,6 +9,7 @@ import org.koin.core.logger.Level
 import com.udacity.shoestore.login.di.LoginModule
 import com.udacity.shoestore.productsfeed.di.ProductsFeedModule
 import com.udacity.shoestore.productdetails.di.ProductDetailsModule
+import com.udacity.shoestore.producteditor.di.ProductEditorModule
 import tech.jesselima.local.gson.GsonModule
 import tech.jesselima.local.sharedpref.di.SharedPrefModule
 import tech.jesselima.local.sqlite.data.shoes.di.ShoeLocalDatabaseModule
@@ -26,10 +27,11 @@ internal class GlobalInjectableDependencies(
                     GsonModule.loadModuleDependency(),
                     ShoeLocalDatabaseModule.loadModuleDependency(),
                     LocalDataModule.loadModuleDependency(),
+                    SharedPrefModule.loadModuleDependency(),
                     LoginModule.loadModuleDependency(),
                     ProductsFeedModule.loadModuleDependency(),
                     ProductDetailsModule.loadModuleDependency(),
-                    SharedPrefModule.loadModuleDependency(),
+                    ProductEditorModule.loadModuleDependency(),
                 )
             )
         }
