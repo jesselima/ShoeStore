@@ -7,31 +7,69 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="@dimen/layout_margin_default"
         tools:context=".productsfeed.ProductsFeedFragment">
 
         <TextView
+            android:id="@+id/labelTopSellers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/products_feed"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonActionProductsFeed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.95" />
-
-        <Button
-            android:id="@+id/buttonActionProductsFeed"
-            style="@style/TextAppearance.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/go_to_product_details"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/top_sellers"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerShoesHotSelling"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/layout_margin_medium"
+            android:padding="@dimen/layout_margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/labelTopSellers"
+            tools:itemCount="10"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/item_list_shoe_highlight" />
+
+        <TextView
+            android:id="@+id/labelShoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/shoes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerShoesHotSelling" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelShoes">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewShoesExceptHotSelling"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    tools:itemCount="10"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:listitem="@layout/item_list_shoe" />
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
