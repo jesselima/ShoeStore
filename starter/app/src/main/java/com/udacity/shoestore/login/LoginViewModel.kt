@@ -146,6 +146,18 @@ class LoginViewModel(
             image = "model_shoe_03"
         ),
         Shoe(
+            name = "Altitude 5",
+            brand = "Pulma",
+            category = "casual",
+            isHotSelling = false,
+            price = 150.0f,
+            quantitySold = 123,
+            season = "Winter",
+            stockQuantity = 88,
+            year = 2020,
+            image = "none"
+        ),
+        Shoe(
             name = "Sport Clutch",
             brand = "Pulma",
             category = "social",
@@ -168,6 +180,18 @@ class LoginViewModel(
             stockQuantity = 90,
             year = 2019,
             image = "model_shoe_01"
+        ),
+        Shoe(
+            name = "Runner Rouge",
+            brand = "Nike",
+            category = "casual",
+            isHotSelling = true,
+            price = 120.0f,
+            quantitySold = 56,
+            season = "Spring",
+            stockQuantity = 21,
+            year = 2020,
+            image = "none"
         ),
         Shoe(
             name = "Adistar Pop",

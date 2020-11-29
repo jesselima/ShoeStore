@@ -18,39 +18,37 @@
         android:layout_margin="@dimen/layout_margin_small"
         android:background="?android:attr/selectableItemBackground">
 
-        <Button
-            android:id="@+id/buttonEditHotSelling"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/layout_margin_medium"
-            android:layout_marginBottom="8dp"
-            android:text="@string/edit"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textShoePriceHotSelling"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textShoePriceHotSelling" />
+        <ImageView
+            android:id="@+id/imageShoeHighlightedItem"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/model_shoe_01"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/shoe_image_item" />
 
         <View
             android:id="@+id/view"
             android:layout_width="40dp"
             android:layout_height="1dp"
-            android:layout_marginStart="@dimen/layout_margin_medium"
+            android:layout_marginStart="8dp"
             android:background="@color/secondaryBackgroundColor"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageShoeHighlightedItem"
             app:layout_constraintTop_toBottomOf="@+id/textShoeNameHotSelling" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textShoeNameHotSelling"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_medium"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/layout_margin_medium"
             android:maxLines="2"
             android:paddingBottom="@dimen/layout_margin_small"
             android:textColor="@color/textColorPrimary"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageShoeHighlightedItem"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Max ADV 50" />
 
@@ -58,12 +56,13 @@
             android:id="@+id/textShoePriceHotSelling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_medium"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
             android:textColor="@color/textColorPrimary"
+            android:text="@string/price_format"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageShoeHighlightedItem"
             app:layout_constraintTop_toBottomOf="@+id/textShoeBrandHotSelling"
             tools:text="$ 2.32" />
 
@@ -71,11 +70,11 @@
             android:id="@+id/textShoeBrandHotSelling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_medium"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/layout_margin_medium"
             android:textColor="@color/textColorPrimary"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageShoeHighlightedItem"
             app:layout_constraintTop_toBottomOf="@+id/view"
             tools:text="Adidas" />
 
@@ -83,10 +82,12 @@
             android:id="@+id/imageView"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/top_selling_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_whatshot_24"
-            android:contentDescription="@string/top_selling_product" />
+            app:srcCompat="@drawable/ic_whatshot_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

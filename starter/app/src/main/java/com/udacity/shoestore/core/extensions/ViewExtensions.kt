@@ -39,3 +39,19 @@ fun View.showListItemWithFadeIn() {
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false) : View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
 }
+
+fun mapStringToImageResource(value: String?) : Int {
+    return when(value) {
+        "model_shoe_01" -> R.drawable.model_shoe_01
+        "model_shoe_02" -> R.drawable.model_shoe_02
+        "model_shoe_03" -> R.drawable.model_shoe_03
+        "model_shoe_04" -> R.drawable.model_shoe_04
+        "model_shoe_05" -> R.drawable.model_shoe_05
+        "model_shoe_06" -> R.drawable.model_shoe_06
+        "model_shoe_07" -> R.drawable.model_shoe_07
+        "model_shoe_08" -> R.drawable.model_shoe_08
+        "model_shoe_09" -> R.drawable.model_shoe_09
+        "model_shoe_10" -> R.drawable.model_shoe_10
+        else -> R.drawable.model_shoe_default
+    }
+}

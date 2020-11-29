@@ -3,7 +3,10 @@ package com.udacity.shoestore.sharedpresentation.adapter
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.udacity.shoestore.R
+import com.udacity.shoestore.core.extensions.mapStringToImageResource
 import com.udacity.shoestore.productsfeed.ProductsFeedFragmentDirections
+import kotlinx.android.synthetic.main.item_list_shoe.view.*
 import kotlinx.android.synthetic.main.item_list_shoe_highlight.view.*
 import tech.jesselima.local.sqlite.data.shoes.models.Shoe
 
@@ -27,6 +30,7 @@ class ShoeHighlightViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
         this.shoe = shoe
         view.textShoeNameHotSelling.text = shoe.name
         view.textShoeBrandHotSelling.text = shoe.brand
-        view.textShoePriceHotSelling.text = shoe.price.toString()
+        view.textShoePriceHotSelling.text = view.context.getString(R.string.price_format, shoe.price)
+        view.imageShoeHighlightedItem.setImageResource(mapStringToImageResource(shoe.image))
     }
 }
