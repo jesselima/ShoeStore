@@ -26,7 +26,8 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.udacity.shoestore.welcome.WelcomeFragment"
-        android:label="fragment_welcome">
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/navigateToInstructions"
             app:destination="@id/instructionsFragment"
@@ -42,7 +43,8 @@
     <fragment
         android:id="@+id/instructionsFragment"
         android:name="com.udacity.shoestore.instructions.InstructionsFragment"
-        android:label="fragment_instructions">
+        android:label="fragment_instructions"
+        tools:layout="@layout/fragment_instructions">
         <action
             android:id="@+id/navigateToProductsFeed"
             app:destination="@id/productsFeedFragment"
@@ -58,7 +60,8 @@
     <fragment
         android:id="@+id/productsFeedFragment"
         android:name="com.udacity.shoestore.productsfeed.ProductsFeedFragment"
-        android:label="fragment_products_feed">
+        android:label="fragment_products_feed"
+        tools:layout="@layout/fragment_products_feed">
         <action
             android:id="@+id/navigateToProductDetails"
             app:destination="@id/productDetailsFragment"
@@ -67,15 +70,13 @@
             app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/fade_out"/>
-        <action
-            android:id="@+id/navigateToProductEditor"
-            app:destination="@id/productEditorFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.udacity.shoestore.productdetails.ProductDetailsFragment"
-        android:label="fragment_product_details" >
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details">
         <action
             android:id="@+id/navigateBackToProductsFeed"
             app:destination="@id/productsFeedFragment"
@@ -93,6 +94,7 @@
     <fragment
         android:id="@+id/productEditorFragment"
         android:name="com.udacity.shoestore.producteditor.ProductEditorFragment"
-        android:label="ProductEditorFragment" />
+        android:label="ProductEditorFragment"
+        tools:layout="@layout/fragment_product_editor"/>
 
 </navigation>

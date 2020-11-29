@@ -1,13 +1,15 @@
 package com.udacity.shoestore.sharedpresentation.adapter
 
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.shoestore.R
 import com.udacity.shoestore.core.extensions.mapStringToImageResource
-import com.udacity.shoestore.productsfeed.ProductsFeedFragmentDirections
 import kotlinx.android.synthetic.main.item_list_shoe.view.*
 import tech.jesselima.local.sqlite.data.shoes.models.Shoe
+
+private const val KEY_SHOE = "KEY_SHOE"
 
 class ShoeDefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
@@ -19,17 +21,16 @@ class ShoeDefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), 
     }
 
     override fun onClick(v: View?) {
+        val bundle = bundleOf(KEY_SHOE to shoe)
         view.findNavController()
-            .navigate(
-                    ProductsFeedFragmentDirections.navigateToProductDetails()
-            )
+            .navigate(R.id.navigateToProductDetails, bundle)
     }
 
     fun bindDataToView(shoe: Shoe) {
         this.shoe = shoe
         view.textShoeName.text = shoe.name
         view.textShoeBrand.text = shoe.name
-        view.textShoePrice.text = view.context.getString(R.string.price_format, shoe.price)
+        view.textShoePrice.text = view.context.getString(R.string.price_format, String.format("%.2f", shoe.price))
         view.imageShoeItem.setImageResource(mapStringToImageResource(shoe.image))
     }
 }

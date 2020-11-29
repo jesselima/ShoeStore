@@ -1,9 +1,12 @@
 package tech.jesselima.local.sqlite.data.shoes.models
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "shoes")
 data class Shoe(
 
@@ -39,5 +42,4 @@ data class Shoe(
 
     @ColumnInfo(name = "image")
     val image: String? = null
-
-)
+): Parcelable

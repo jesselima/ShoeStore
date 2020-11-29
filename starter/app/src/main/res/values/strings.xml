@@ -19,7 +19,7 @@
     <string name="insert_dummy_shoes">Insert Dummy Shoes</string>
     <string name="buy">Buy</string>
     <string name="edit">Edit</string>
-    <string name="price_format">USD %f</string>
+    <string name="price_format">USD %s</string>
     <string name="top_selling_product">Top Selling Product</string>
     <string name="top_sellers">TOP SELLERS</string>
     <string name="shoes">SHOES</string>
@@ -45,4 +45,5 @@
     <string name="noe_shoes_found_message">No shoes found on the Store.\nWhat about to add some?</string>
     <string name="great">Great!</string>
     <string name="shoe_image_item">Shoe Image Item</string>
+    <string name="top_seller">Top \nSeller</string>
 </resources>
