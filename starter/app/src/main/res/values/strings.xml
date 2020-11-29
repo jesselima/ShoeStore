@@ -16,4 +16,31 @@
     <string name="go_to_feed">Go to Feed</string>
     <string name="go_to_instructions">Go to Instructions</string>
     <string name="go_to_product_details">Go to Product Details</string>
+    <string name="insert_dummy_shoes">Insert Dummy Shoes</string>
+    <string name="buy">Buy</string>
+    <string name="edit">Edit</string>
+    <string name="price_format">USD %d</string>
+    <string name="top_selling_product">Top Selling Product</string>
+    <string name="top_sellers">TOP SELLERS</string>
+    <string name="shoes">SHOES</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+
+    <string name="box_one">Box One</string>
+    <string name="box_two">Box Two</string>
+    <string name="box_three">Box Three</string>
+    <string name="box_four">Box Four</string>
+    <string name="box_five">Box Five</string>
+    <string name="button_yellow">YELLOW</string>
+    <string name="button_red">RED</string>
+    <string name="button_green">GREEN</string>
+    <string name="how_to_play">How To Play:</string>
+    <string name="how_to_play_description">Tab the screens and button.</string>
+    <string name="description">Description</string>
+    <string name="product_description_here">Product description here…</string>
+    <string name="welcome_to_the_shoe_store">Welcome to the Shoe Store.\nPlease, authenticate to access the store manager.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_sample_data_saved">Sample data saved!</string>
 </resources>
