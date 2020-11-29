@@ -12,12 +12,17 @@ class SharedPrefUserStorageImpl(
     private val gson: Gson
 ) : SharedPrefUserStorage {
 
-    override fun getStoredUser(): UserData? {
-        val tokenStr = prefs.getString(KEY_USER_INFO, null)
-        return if (tokenStr == null) null
-        else gson.fromJson(tokenStr, UserData::class.java)
+    override fun getStoredUser(key: String): UserData? {
+        val userDataString = prefs.getString(KEY_USER_INFO, null)
+        return gson.fromJson(userDataString, UserData::class.java)
     }
 
+    override fun saveUserData(userData: UserData) {
+        prefs.edit()
+            .putString(KEY_USER_INFO, gson.toJson(userData))
+            .apply()
+
+    }
 
     override fun saveValue(key: String, value: String) {
         prefs.edit()

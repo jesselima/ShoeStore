@@ -1,12 +1,12 @@
-package tech.jesselima.local.sqlite.data.shoes.repository
+package tech.jesselima.local.sqlite.data.shoes.datasource
 
 import android.app.Application
 import tech.jesselima.local.sqlite.data.AppDatabase
 import tech.jesselima.local.sqlite.data.shoes.models.Shoe
 
-class ShoesLocalRepositoryImpl(
+class ShoesLocalDataSourceImpl(
     application: Application
-): ShoesLocalRepository {
+): ShoesLocalDataSource {
 
     private val shoeDao = AppDatabase.getDatabase(application).shoesDao()
 
@@ -14,7 +14,7 @@ class ShoesLocalRepositoryImpl(
         return shoeDao.getAllShoes()
     }
 
-    override suspend fun getShoeById(id: String): Shoe {
+    override suspend fun getShoeById(id: Int): Shoe {
         return shoeDao.getShoeById(id)
     }
 
@@ -26,8 +26,16 @@ class ShoesLocalRepositoryImpl(
         return shoeDao.getHotSellingShoes()
     }
 
+    override suspend fun getAllShoesExceptHotSelling() : List<Shoe> {
+        return shoeDao.getAllShoesExceptHotSelling()
+    }
+
     override suspend fun insertShoe(shoe: Shoe): Long {
         return shoeDao.insertShoe(shoe)
+    }
+
+    override suspend fun updateShoe(shoe: Shoe): Int {
+        return shoeDao.updateShoe(shoe)
     }
 
     override suspend fun deleteShoe(shoe: Shoe): Int {

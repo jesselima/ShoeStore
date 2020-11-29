@@ -1,8 +1,8 @@
 package tech.jesselima.local.sqlite.data.shoes.di
 
 import org.koin.dsl.module
-import tech.jesselima.local.sqlite.data.shoes.repository.ShoesLocalRepository
-import tech.jesselima.local.sqlite.data.shoes.repository.ShoesLocalRepositoryImpl
+import tech.jesselima.local.sqlite.data.shoes.datasource.ShoesLocalDataSource
+import tech.jesselima.local.sqlite.data.shoes.datasource.ShoesLocalDataSourceImpl
 
 /**
  * Created by jesselima on 22/11/20.
@@ -11,8 +11,8 @@ import tech.jesselima.local.sqlite.data.shoes.repository.ShoesLocalRepositoryImp
 object ShoeLocalDatabaseModule {
 
     private val shoeLocalDatabaseModuleModule = module {
-        single<ShoesLocalRepository> {
-            ShoesLocalRepositoryImpl(
+        single<ShoesLocalDataSource> {
+            ShoesLocalDataSourceImpl(
                 application = get()
             )
         }

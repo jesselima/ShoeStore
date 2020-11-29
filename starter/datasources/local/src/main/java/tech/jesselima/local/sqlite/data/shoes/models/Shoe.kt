@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "shoes")
 data class Shoe(
 
-    @PrimaryKey @ColumnInfo(name = "id")
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
 
     @ColumnInfo(name = "name")
     val name: String? = null,
@@ -29,11 +29,15 @@ data class Shoe(
     val category: String? = null,
 
     @ColumnInfo(name = "is_hot_selling")
-    val isHotSelling: Boolean? = null,
+    val isHotSelling: Boolean = false,
 
     @ColumnInfo(name = "stock_quantity")
-    val stockQuantity: Boolean? = null,
+    val stockQuantity: Int? = null,
 
     @ColumnInfo(name = "quantity_sold")
-    val quantitySold: Boolean? = null
+    val quantitySold: Int? = null,
+
+    @ColumnInfo(name = "image")
+    val image: String? = null
+
 )

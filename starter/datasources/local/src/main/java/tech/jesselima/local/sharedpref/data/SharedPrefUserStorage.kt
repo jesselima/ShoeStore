@@ -3,7 +3,8 @@ package tech.jesselima.local.sharedpref.data
 import tech.jesselima.local.sharedpref.data.models.UserData
 
 interface SharedPrefUserStorage {
-    fun getStoredUser(): UserData?
+    fun getStoredUser(key: String): UserData?
+    fun saveUserData(userData: UserData)
     fun saveValue(key: String, value: String)
     fun saveValue(key: String, value: Int)
     fun saveValue(key: String, value: Boolean)
