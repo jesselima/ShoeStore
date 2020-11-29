@@ -10,7 +10,7 @@ import androidx.room.Update
 @Dao
 interface ShoeDao {
 
-    @Query("SELECT * FROM shoes")
+    @Query("SELECT * FROM shoes ORDER BY is_hot_selling DESC")
     suspend fun getAllShoes(): List<Shoe>
 
     @Query("SELECT * FROM shoes WHERE id = :id")

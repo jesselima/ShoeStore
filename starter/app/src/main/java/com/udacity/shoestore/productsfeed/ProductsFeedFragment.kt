@@ -20,7 +20,6 @@ class ProductsFeedFragment : Fragment() {
 
     private lateinit var binding: FragmentProductsFeedBinding
     private val viewModel by viewModel<ProductsFeedViewModel>()
-    private var adapterHotSelling = ShoeAdapter()
     private var adapterShoes = ShoeAdapter()
 
     override fun onCreateView(
@@ -40,8 +39,7 @@ class ProductsFeedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
         setupListeners()
-        setupRecyclerViewForHotSelling()
-        setupRecyclerViewForShoesExceptHotSelling()
+        setupRecyclerViewForAllShoes()
     }
 
     private fun setupListeners() {
@@ -50,14 +48,7 @@ class ProductsFeedFragment : Fragment() {
         }
     }
 
-    private fun setupRecyclerViewForHotSelling() {
-        val linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        binding.recyclerShoesHotSelling.layoutManager = linearLayoutManager
-        binding.recyclerShoesHotSelling.adapter = adapterHotSelling
-    }
-
-    private fun setupRecyclerViewForShoesExceptHotSelling() {
+    private fun setupRecyclerViewForAllShoes() {
         binding.recyclerViewShoesGeneralList.layoutManager = LinearLayoutManager(context).apply {
             orientation = LinearLayoutManager.VERTICAL
         }
@@ -78,11 +69,6 @@ class ProductsFeedFragment : Fragment() {
             groupFeedMainContent.isVisible = allShoes.isNotEmpty()
             groupFeedNoShoesFound.isVisible = allShoes.isEmpty()
             adapterShoes.submitList(allShoes)
-        })
-        viewModel.hotSellingShoesLiveData.observe(viewLifecycleOwner, { hotSellingShoes ->
-            recyclerShoesHotSelling.isVisible = hotSellingShoes.isEmpty()
-            labelTopSellers.isVisible = hotSellingShoes.isNotEmpty()
-            adapterHotSelling.submitList(hotSellingShoes)
         })
     }
 }

@@ -25,32 +25,18 @@ class ProductsFeedViewModel(
     private val _allShoesMutableLiveData = MutableLiveData<List<Shoe>>()
     val allShoesLiveData: LiveData<List<Shoe>> = _allShoesMutableLiveData
 
-    private val _hotSellingShoesMutableLiveData = MutableLiveData<List<Shoe>>()
-    val hotSellingShoesLiveData: LiveData<List<Shoe>> = _hotSellingShoesMutableLiveData
-
     init {
         _isLoadingMutableLiveData.value = true
         getAllShoes()
-        getHotSellingShoes()
     }
 
     private fun getAllShoes() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
-                shoesLocalRepository.getAllShoesExceptHotSelling()
+                shoesLocalRepository.getAllShoes()
             }
             _isLoadingMutableLiveData.value = false
             _allShoesMutableLiveData.value = result
-            Timber.d(result.toString())
-        }
-    }
-
-    private fun getHotSellingShoes() {
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                shoesLocalRepository.getHotSellingShoes()
-            }
-            _hotSellingShoesMutableLiveData.value = result
             Timber.d(result.toString())
         }
     }
