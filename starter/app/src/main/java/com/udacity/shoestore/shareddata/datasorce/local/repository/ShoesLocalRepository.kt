@@ -1,4 +1,4 @@
-package tech.jesselima.local.sqlite.data.shoes.repository
+package com.udacity.shoestore.shareddata.datasorce.local.repository
 
 import tech.jesselima.local.sqlite.data.shoes.models.Shoe
 
@@ -12,12 +12,16 @@ interface ShoesLocalRepository {
 
     suspend fun insertShoe(shoe: Shoe): Long
 
+    suspend fun updateShoe(shoe: Shoe): Int
+
     suspend fun deleteShoe(shoe: Shoe): Int
 
-    suspend fun getShoeById(id: String): Shoe
+    suspend fun getShoeById(id: Int): Shoe
 
     suspend fun getShoesByCategory(category: String) : List<Shoe>
 
     suspend fun getHotSellingShoes() : List<Shoe>
+
+    suspend fun getAllShoesExceptHotSelling() : List<Shoe>
 
 }

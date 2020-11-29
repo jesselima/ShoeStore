@@ -2,6 +2,7 @@ package com.udacity.shoestore.di
 
 import android.content.Context
 import org.koin.android.ext.koin.androidContext
+import com.udacity.shoestore.shareddata.datasorce.local.di.LocalDataModule
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -21,6 +22,7 @@ internal class GlobalInjectableDependencies(
                 listOf(
                     GsonModule.loadModuleDependency(),
                     ShoeLocalDatabaseModule.loadModuleDependency(),
+                    LocalDataModule.loadModuleDependency(),
                     SharedPrefModule.loadModuleDependency(),
                 )
             )
