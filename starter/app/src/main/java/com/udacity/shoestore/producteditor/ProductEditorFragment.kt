@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.FragmentProductEditorBinding
 import com.udacity.shoestore.databinding.FragmentProductsFeedBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -14,7 +15,7 @@ import timber.log.Timber
 
 class ProductEditorFragment : Fragment() {
 
-    private lateinit var binding: FragmentProductsFeedBinding
+    private lateinit var binding: FragmentProductEditorBinding
     private val viewModel by viewModel<ProductEditorViewModel>()
 
     override fun onCreateView(

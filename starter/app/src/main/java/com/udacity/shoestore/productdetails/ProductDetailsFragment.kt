@@ -50,13 +50,13 @@ class ProductDetailsFragment : Fragment() {
         binding.buttonActionFromProductDetails.setOnClickListener {
             binding.productDetailsImageBackAction.visibility = View.GONE
             findNavController().navigate(
-                ProductDetailsFragmentDirections.actionProductDetailsFragmentToProductsFeedFragment()
+                ProductDetailsFragmentDirections.navigateBackToProductsFeed()
             )
         }
         binding.productDetailsImageBackAction.setOnClickListener {
             it.visibility = View.GONE
             findNavController().navigate(
-                    ProductDetailsFragmentDirections.actionProductDetailsFragmentToProductsFeedFragment()
+                    ProductDetailsFragmentDirections.navigateBackToProductsFeed()
             )
         }
     }

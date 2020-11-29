@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
-import com.udacity.shoestore.login.LoginFragmentDirections
 
 
 class WelcomeFragment : Fragment() {
@@ -43,7 +42,7 @@ class WelcomeFragment : Fragment() {
     private fun setupListeners() {
         binding.buttonActionFromWelcome.setOnClickListener {
             findNavController().navigate(
-                WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment()
+                WelcomeFragmentDirections.navigateToInstructions()
             )
         }
     }

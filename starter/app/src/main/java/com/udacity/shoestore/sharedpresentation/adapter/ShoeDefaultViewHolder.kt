@@ -19,7 +19,7 @@ class ShoeDefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), 
     override fun onClick(v: View?) {
         view.findNavController()
             .navigate(
-                    ProductsFeedFragmentDirections.actionProductsFeedFragmentToProductDetailsFragment()
+                    ProductsFeedFragmentDirections.navigateToProductDetails()
             )
     }
 

@@ -19,25 +19,27 @@ class ProductsFeedViewModel(
     private val shoesLocalRepository: ShoesLocalRepository
 ): ViewModel() {
 
-    init {
-        getHotSellingShoes()
-        getAllShoesExceptHotSelling()
-    }
+    private val _isLoadingMutableLiveData = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoadingMutableLiveData
 
     private val _allShoesMutableLiveData = MutableLiveData<List<Shoe>>()
-    val allShoesExceptHotSellingLiveData: LiveData<List<Shoe>> = _allShoesMutableLiveData
+    val allShoesLiveData: LiveData<List<Shoe>> = _allShoesMutableLiveData
 
     private val _hotSellingShoesMutableLiveData = MutableLiveData<List<Shoe>>()
     val hotSellingShoesLiveData: LiveData<List<Shoe>> = _hotSellingShoesMutableLiveData
 
-//    private val _shoesByCategoryMutableLiveData = MutableLiveData<List<Shoe>>()
-//    val shoesByCategoryLiveData: LiveData<List<Shoe>> = _shoesByCategoryMutableLiveData
+    init {
+        _isLoadingMutableLiveData.value = true
+        getAllShoes()
+        getHotSellingShoes()
+    }
 
-    private fun getAllShoesExceptHotSelling() {
+    private fun getAllShoes() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 shoesLocalRepository.getAllShoesExceptHotSelling()
             }
+            _isLoadingMutableLiveData.value = false
             _allShoesMutableLiveData.value = result
             Timber.d(result.toString())
         }
@@ -52,14 +54,4 @@ class ProductsFeedViewModel(
             Timber.d(result.toString())
         }
     }
-
-//    fun getShoesByCategory(category: String) {
-//        viewModelScope.launch {
-//            val result = withContext(Dispatchers.IO) {
-//                shoesLocalRepository.getShoesByCategory(category = category)
-//            }
-//            _shoesByCategoryMutableLiveData.value = result
-//            Timber.d(result.toString())
-//        }
-//    }
 }

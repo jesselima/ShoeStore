@@ -26,7 +26,6 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
 
-
     <string name="box_one">Box One</string>
     <string name="box_two">Box Two</string>
     <string name="box_three">Box Three</string>
@@ -43,4 +42,6 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="message_sample_data_saved">Sample data saved!</string>
+    <string name="noe_shoes_found_message">No shoes found on the Store.\nWhat about to add some?</string>
+    <string name="great">Great!</string>
 </resources>

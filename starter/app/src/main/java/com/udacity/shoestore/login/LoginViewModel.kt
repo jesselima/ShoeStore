@@ -180,6 +180,66 @@ class LoginViewModel(
             stockQuantity = 60,
             year = 2020,
             image = "model_shoe_09"
+        ),
+        Shoe(
+            name = "Adventura Mantis",
+            brand = "Victor Hugo",
+            category = "social",
+            isHotSelling = true,
+            price = 56.0f,
+            quantitySold = 150,
+            season = "Summer",
+            stockQuantity = 15,
+            year = 2019,
+            image = "model_shoe_04"
+        ),
+        Shoe(
+            name = "Boot Master X 1",
+            brand = "Nike",
+            category = "casual",
+            isHotSelling = false,
+            price = 35.0f,
+            quantitySold = 48,
+            season = "Winter",
+            stockQuantity = 77,
+            year = 2020,
+            image = "model_shoe_03"
+        ),
+        Shoe(
+            name = "Sport Clutch",
+            brand = "Pulma",
+            category = "social",
+            isHotSelling = true,
+            price = 45.0f,
+            quantitySold = 50,
+            season = "Summer",
+            stockQuantity = 15,
+            year = 2020,
+            image = "model_shoe_02"
+        ),
+        Shoe(
+            name = "Boot Master X 1",
+            brand = "Nike",
+            category = "casual",
+            isHotSelling = false,
+            price = 93.0f,
+            quantitySold = 48,
+            season = "Winter",
+            stockQuantity = 90,
+            year = 2019,
+            image = "model_shoe_01"
+        ),
+        Shoe(
+            name = "Adistar Pop",
+            brand = "Adidas",
+            category = "sport",
+            isHotSelling = false,
+            price = 70.0f,
+            quantitySold = 48,
+            season = "Summer",
+            stockQuantity = 60,
+            year = 2020,
+            image = "model_shoe_09"
         )
     )
 }

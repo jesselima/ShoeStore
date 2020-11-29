@@ -42,7 +42,7 @@ class LoginFragment : Fragment() {
     private fun setupObservers() {
         viewModel.isLoginSuccess.observe(viewLifecycleOwner, { isLoginSuccess ->
             if (isLoginSuccess) {
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+                findNavController().navigate(R.id.navigateToWelcome)
             }
         })
         viewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
