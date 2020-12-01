@@ -55,3 +55,18 @@ fun mapStringToImageResource(value: String?) : Int {
         else -> R.drawable.model_shoe_default
     }
 }
+
+fun getRandomImageKey() : String {
+    return listOf(
+        "model_shoe_01",
+        "model_shoe_02",
+        "model_shoe_03",
+        "model_shoe_04",
+        "model_shoe_05",
+        "model_shoe_06",
+        "model_shoe_07",
+        "model_shoe_08",
+        "model_shoe_09",
+        "model_shoe_10"
+    ).shuffled().first()
+}

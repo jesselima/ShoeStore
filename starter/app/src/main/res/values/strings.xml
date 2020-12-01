@@ -24,7 +24,9 @@
     <string name="top_sellers">TOP SELLERS</string>
     <string name="shoes">SHOES</string>
     <string name="cancel">Cancel</string>
-    <string name="save">Save</string>
+    <string name="save">SAVE</string>
+    <string name="created_shoe">Add new shoe</string>
+    <string name="update_shoe">Update shoe</string>
 
     <string name="box_one">Box One</string>
     <string name="box_two">Box Two</string>
@@ -46,4 +48,18 @@
     <string name="great">Great!</string>
     <string name="shoe_image_item">Shoe Image Item</string>
     <string name="top_seller">Top \nSeller</string>
+    <string name="label_shoe_name">Name</string>
+    <string name="label_brand">Brand</string>
+    <string name="label_price">Price</string>
+    <string name="label_category">Category</string>
+    <string name="label_season">Season</string>
+    <string name="label_year">Year</string>
+    <string name="label_stock">Stock</string>
+    <string name="label_quantity_sold">Quantity sold</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="update">UPDATE</string>
+    <string name="add_new_shoe">Add a new shoe</string>
+    <string name="label">LABEL</string>
+    <string name="season">Season</string>
+    <string name="hot_seller_shoe">Hot Seller Shoe \t</string>
 </resources>

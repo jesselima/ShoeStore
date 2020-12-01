@@ -21,7 +21,7 @@ class ShoeHighlightViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     }
 
     override fun onClick(v: View?) {
-        val bundle = bundleOf(KEY_SHOE to shoe)
+        val bundle = bundleOf(KEY_SHOE to shoe?.id)
         view.findNavController().navigate(R.id.navigateToProductDetails, bundle)
     }
 

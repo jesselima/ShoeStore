@@ -21,9 +21,8 @@ class ShoeDefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), 
     }
 
     override fun onClick(v: View?) {
-        val bundle = bundleOf(KEY_SHOE to shoe)
-        view.findNavController()
-            .navigate(R.id.navigateToProductDetails, bundle)
+        val bundle = bundleOf(KEY_SHOE to shoe?.id)
+        view.findNavController().navigate(R.id.navigateToProductDetails, bundle)
     }
 
     fun bindDataToView(shoe: Shoe) {
