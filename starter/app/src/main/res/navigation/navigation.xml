@@ -70,6 +70,9 @@
             app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/navigateFromFeedToShoeEditor"
+            app:destination="@id/productEditorFragment" />
     </fragment>
 
     <fragment
@@ -82,7 +85,6 @@
             app:destination="@id/productsFeedFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out_right"
-            app:launchSingleTop="true"
             app:popEnterAnim="@anim/fade_out"
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/productsFeedFragment"
@@ -95,6 +97,11 @@
         android:id="@+id/productEditorFragment"
         android:name="com.udacity.shoestore.producteditor.ProductEditorFragment"
         android:label="ProductEditorFragment"
-        tools:layout="@layout/fragment_product_editor"/>
+        tools:layout="@layout/fragment_product_editor">
+        <action
+            android:id="@+id/navigateBackToShoeDetails"
+            app:destination="@id/productDetailsFragment"
+            app:popUpTo="@id/productDetailsFragment"/>
+    </fragment>
 
 </navigation>

@@ -43,8 +43,8 @@ class ProductsFeedFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        buttonActionGoToEditor.setOnClickListener {
-            findNavController().navigate(R.id.navigateToProductEditor)
+        feedButtonAddNewShoe.setOnClickListener {
+            findNavController().navigate(R.id.navigateFromFeedToShoeEditor)
         }
     }
 
