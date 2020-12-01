@@ -9,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import tech.jesselima.local.sqlite.data.shoes.models.Shoe
-import timber.log.Timber
 
 /**
  * Created by jesselima on 22/11/20.
@@ -19,15 +18,15 @@ class ProductDetailsViewModel(
     private val shoesLocalRepository: ShoesLocalRepository
 ): ViewModel() {
 
-    private val _mutableLiveData = MutableLiveData<Shoe>()
-    val shoeLiveData: LiveData<Shoe> = _mutableLiveData
+    private val _shoeMutableLiveData = MutableLiveData<Shoe>()
+    val shoe: LiveData<Shoe> = _shoeMutableLiveData
 
     fun getShoeById(id: Int) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 shoesLocalRepository.getShoeById(id = id)
             }
-            Timber.d(result.toString())
+            _shoeMutableLiveData.value = result
         }
     }
 }
