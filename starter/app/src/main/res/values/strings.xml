@@ -75,4 +75,12 @@
     <string name="message_confirm_delete_action">This action will delete the item from the database. This action can not be undone.</string>
     <string name="message_item_updated">Item updated!</string>
     <string name="message_item_deleted">Item deleted!</string>
+    <string name="message_ok_got_it">OK, got it!</string>
+    <string name="instructions_item_1">• Use the feed to keep track of all shoes.</string>
+    <string name="instructions_item_2">• Click on an item to see its details.</string>
+    <string name="instructions_item_3">• Clique on the ADD button to add a new shoe.</string>
+    <string name="instructions_item_4">• You can edit or remove if needed.</string>
+    <string name="instructions_item_5">• All items are store offline.</string>
+    <string name="instructions_item_6">• Use de Top Seller option to group relevant shoes at the top of the list.</string>
+    <string name="label_remember">Remember:</string>
 </resources>
