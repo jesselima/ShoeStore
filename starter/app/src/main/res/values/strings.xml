@@ -2,8 +2,8 @@
     <string name="app_name">Shoe Store</string>
     <string name="login">Login</string>
     <string name="welcome">Welcome</string>
-    <string name="products_feed">Products Feed</string>
-    <string name="product_details">Product Details</string>
+    <string name="products_feed">Shoes Feed</string>
+    <string name="product_details">Shoe Details</string>
     <!-- Dummy data for example buttons -->
     <string name="welcomeButtonOk">WELCOME SCREEN</string>
     <string name="instructionButtonOk">INSTRUCTIONS SCREEN</string>
@@ -15,15 +15,15 @@
     <string name="go_to_welcome">Go to Welcome</string>
     <string name="go_to_feed">Go to Feed</string>
     <string name="go_to_instructions">Go to Instructions</string>
-    <string name="go_to_product_details">Go to Product Details</string>
+    <string name="go_to_product_details">Go to Shoe Details</string>
     <string name="insert_dummy_shoes">Insert Dummy Shoes</string>
     <string name="buy">Buy</string>
     <string name="edit">Edit</string>
     <string name="price_format">USD %s</string>
-    <string name="top_selling_product">Top Selling Product</string>
+    <string name="top_selling_product">Top Selling Shoes</string>
     <string name="top_sellers">TOP SELLERS</string>
     <string name="shoes">SHOES</string>
-    <string name="cancel">Cancel</string>
+    <string name="label_cancel">Cancel</string>
     <string name="save">SAVE</string>
     <string name="created_shoe">Add new shoe</string>
     <string name="update_shoe">Update shoe</string>
@@ -39,7 +39,7 @@
     <string name="how_to_play">How To Play:</string>
     <string name="how_to_play_description">Tab the screens and button.</string>
     <string name="description">Description</string>
-    <string name="product_description_here">Product description here…</string>
+    <string name="product_description_here">Shoe description here…</string>
     <string name="welcome_to_the_shoe_store">Welcome to the Shoe Store.\nPlease, authenticate to access the store manager.</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -56,10 +56,17 @@
     <string name="label_year">Year</string>
     <string name="label_stock">Stock</string>
     <string name="label_quantity_sold">Quantity sold</string>
-    <string name="edit_product">Edit Product</string>
-    <string name="update">UPDATE</string>
+    <string name="label_edit">Edit</string>
+    <string name="label_update">UPDATE</string>
     <string name="add_new_shoe">Add a new shoe</string>
-    <string name="label">LABEL</string>
+    <string name="label_delete">Delete</string>
     <string name="season">Season</string>
     <string name="hot_seller_shoe">Hot Seller Shoe \t</string>
+    <string name="success">Success!!</string>
+    <string name="message_something_went_wrong">Ooops!! Something went wrong.</string>
+    <string name="label_ok">OK</string>
+    <string name="attention">Attention</string>
+    <string name="message_confirm_delete_action">This action will delete the item from the database. This action can not be undone.</string>
+    <string name="message_item_updated">Item updated!</string>
+    <string name="message_item_deleted">Item deleted!</string>
 </resources>

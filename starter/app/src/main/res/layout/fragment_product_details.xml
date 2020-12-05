@@ -9,264 +9,288 @@
             type="com.udacity.shoestore.productdetails.ProductDetailsViewModel" />
     </data>
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/layout_margin_default"
-        android:background="?android:attr/selectableItemBackground">
-        
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/groupTopSeller"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="detailsImageViewToSeller,detailsImageShoe"/>
+            android:layout_margin="@dimen/layout_margin_default"
+            android:background="?android:attr/selectableItemBackground">
 
-        <ImageView
-            android:id="@+id/detailsImageViewToSeller"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@string/top_selling_product"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_whatshot_24" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarShoeDetails"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationContentDescription="Back to Product"
+                app:navigationIcon="@drawable/ic_arrow_back" />
 
-        <ImageView
-            android:id="@+id/detailsImageShoe"
-            android:layout_width="250dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/shoe_image_item"
-            android:src="@drawable/model_shoe_01"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupShoeEditorTopSeller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="detailsImageViewToSeller,textViewTopSeller"/>
 
-        <TextView
-            android:id="@+id/detailsTextProductName"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            android:text="@{ viewModel.shoe.name }"
-            android:layout_width="@dimen/none"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_margin_medium"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsImageShoe"
-            tools:text="ADISTAR HIGH JUMP" />
+            <ImageView
+                android:id="@+id/detailsImageViewToSeller"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/top_selling_product"
+                app:layout_constraintBottom_toTopOf="@+id/textViewTopSeller"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_whatshot_24" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="@dimen/none"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/top_seller"
-            app:layout_constraintEnd_toEndOf="@+id/detailsImageViewToSeller"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsImageViewToSeller" />
-
-        <TextView
-            android:id="@+id/detailsLabelBrand"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_brand"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsBrand"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsBrand"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ viewModel.shoe.brand }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="Adidas "
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelBrand"
-            app:layout_constraintTop_toBottomOf="@+id/detailsTextProductName" />
-
-        <TextView
-            android:id="@+id/detailsLabelPrice"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_price"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsPrice"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsPrice"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ @string/price_format(viewModel.shoe.price) }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="USD 150.00"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelPrice"
-            app:layout_constraintTop_toBottomOf="@+id/detailsBrand" />
-
-        <TextView
-            android:id="@+id/detailsLabelCategory"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_category"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsCategory"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsCategory"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ viewModel.shoe.category }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="Sports"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelCategory"
-            app:layout_constraintTop_toBottomOf="@+id/detailsPrice" />
-
-        <TextView
-            android:id="@+id/detailsLabelSeason"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_season"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsSeason"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsSeason"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ viewModel.shoe.season }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="Winter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelSeason"
-            app:layout_constraintTop_toBottomOf="@+id/detailsCategory" />
-
-        <TextView
-            android:id="@+id/detailsLabelYear"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_year"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsYear"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsYear"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ viewModel.shoe.year.toString() }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="2020"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelSeason"
-            app:layout_constraintTop_toBottomOf="@+id/detailsSeason" />
-
-        <TextView
-            android:id="@+id/detailsLabelStock"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_stock"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsStock"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsStock"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ viewModel.shoe.stockQuantity.toString() }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="39"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelStock"
-            app:layout_constraintTop_toBottomOf="@+id/detailsYear" />
-
-        <TextView
-            android:id="@+id/detailsLabelQuantitySold"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/label_quantity_sold"
-            android:background="@color/lightGrey"
-            android:padding="@dimen/layout_margin_small"
-            app:layout_constraintBaseline_toBaselineOf="@+id/detailsQuantitySold"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/detailsQuantitySold"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:text="@{ viewModel.shoe.quantitySold.toString() }"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginTop="@dimen/layout_margin_big"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:text="225"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsLabelQuantitySold"
-            app:layout_constraintTop_toBottomOf="@+id/detailsStock" />
-
-        <Button
-            android:id="@+id/detailsButtonEdit"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/edit_product"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailsLabelQuantitySold" />
+            <TextView
+                android:id="@+id/textViewTopSeller"
+                android:layout_width="@dimen/none"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_horizontal"
+                android:text="@string/top_seller"
+                app:layout_constraintBottom_toTopOf="@+id/detailsTextProductName"
+                app:layout_constraintEnd_toEndOf="@+id/detailsImageViewToSeller"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/detailsImageShoe"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/shoe_image_item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detailsTextProductName"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:text="@{ viewModel.shoe.name }"
+                android:layout_width="@dimen/none"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_medium"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsImageShoe"
+                tools:text="ADISTAR HIGH JUMP" />
+
+            <TextView
+                android:id="@+id/detailsLabelBrand"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_brand"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsBrand"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/detailsBrand"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ viewModel.shoe.brand }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="Adidas "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelBrand"
+                app:layout_constraintTop_toBottomOf="@+id/detailsTextProductName" />
+
+            <TextView
+                android:id="@+id/detailsLabelPrice"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_price"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsPrice"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/detailsPrice"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ @string/price_format(viewModel.shoe.price) }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="USD 150.00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelPrice"
+                app:layout_constraintTop_toBottomOf="@+id/detailsBrand" />
+
+            <TextView
+                android:id="@+id/detailsLabelCategory"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_category"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsCategory"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/detailsCategory"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ viewModel.shoe.category }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="Sports"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelCategory"
+                app:layout_constraintTop_toBottomOf="@+id/detailsPrice" />
+
+            <TextView
+                android:id="@+id/detailsLabelSeason"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_season"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsSeason"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/detailsSeason"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ viewModel.shoe.season }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="Winter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelSeason"
+                app:layout_constraintTop_toBottomOf="@+id/detailsCategory" />
+
+            <TextView
+                android:id="@+id/detailsLabelYear"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_year"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsYear"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/detailsYear"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ viewModel.shoe.year.toString() }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="2020"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelSeason"
+                app:layout_constraintTop_toBottomOf="@+id/detailsSeason" />
+
+            <TextView
+                android:id="@+id/detailsLabelStock"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_stock"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsStock"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/detailsStock"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ viewModel.shoe.stockQuantity.toString() }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="39"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelStock"
+                app:layout_constraintTop_toBottomOf="@+id/detailsYear" />
+
+            <TextView
+                android:id="@+id/detailsLabelQuantitySold"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="@dimen/product_detail_label_width"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/label_quantity_sold"
+                android:background="@color/lightGrey"
+                android:padding="@dimen/layout_margin_small"
+                app:layout_constraintBaseline_toBaselineOf="@+id/detailsQuantitySold"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/detailsQuantitySold"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@{ viewModel.shoe.quantitySold.toString() }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_default"
+                android:layout_marginTop="@dimen/layout_margin_big"
+                android:layout_marginEnd="@dimen/layout_margin_default"
+                tools:text="225"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/detailsLabelQuantitySold"
+                app:layout_constraintTop_toBottomOf="@+id/detailsStock" />
+
+            <Button
+                android:id="@+id/detailsButtonEdit"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/edit"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsLabelQuantitySold" />
+
+            <Button
+                android:id="@+id/detailsButtonDelete"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/label_delete"
+                android:textColor="@color/default_red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsButtonEdit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

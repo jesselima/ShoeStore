@@ -16,39 +16,31 @@ import timber.log.Timber
  * This is a part of the project ShoeStore.
  */
 
-private const val INSERT_RESULT_OK = 1L
-private const val UPDATE_RESULT_OK = 1
+private const val UPDATE_RESULT_OK = 0
 
 class ProductEditorViewModel(
     private val shoesLocalRepository: ShoesLocalRepository
 ): ViewModel() {
 
     private val _shoeMutableLiveData = MutableLiveData<Shoe>()
-    val shoesLiveData: LiveData<Shoe> = _shoeMutableLiveData
+    val shoe: MutableLiveData<Shoe> = _shoeMutableLiveData
 
-    private val _isShoeSavedMutableLiveData = MutableLiveData<Boolean>()
-    val isShoeSavedLiveData: LiveData<Boolean> = _isShoeSavedMutableLiveData
+    private val _isShoeUpdated = MutableLiveData<Boolean>()
+    val isShoeUpdated: LiveData<Boolean> = _isShoeUpdated
 
-    private val _isShoeUpdatedMutableLiveData = MutableLiveData<Boolean>()
-    val isShoeUpdatedLiveData: LiveData<Boolean> = _isShoeUpdatedMutableLiveData
+    private val _newShoeId = MutableLiveData<Long>()
+    val newShoeId: LiveData<Long> = _newShoeId
 
-    fun getShoeById(id: Int) {
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) {
-                shoesLocalRepository.getShoeById(id)
-            }
-            _shoeMutableLiveData.value = result
-            Timber.d(result.toString())
-        }
-    }
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun saveNewShoe(shoe: Shoe) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 shoesLocalRepository.insertShoe(shoe = shoe)
             }
-            _isShoeSavedMutableLiveData.value = (result == INSERT_RESULT_OK)
-            Timber.d(result.toString())
+            _isLoading.value = false
+            _newShoeId.value = result
         }
     }
 
@@ -57,8 +49,8 @@ class ProductEditorViewModel(
             val result = withContext(Dispatchers.IO) {
                 shoesLocalRepository.updateShoe(shoe = shoe)
             }
-            _isShoeUpdatedMutableLiveData.value = (result == UPDATE_RESULT_OK)
-            Timber.d(result.toString())
+            _isLoading.value = false
+            _isShoeUpdated.value = (result > UPDATE_RESULT_OK)
         }
     }
 }

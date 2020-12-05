@@ -16,4 +16,5 @@
     <dimen name="text_size_default">16sp</dimen>
     <dimen name="lottie_loading_animation">250dp</dimen>
     <dimen name="none">0dp</dimen>
+    <dimen name="product_detail_label_width">150dp</dimen>
 </resources>

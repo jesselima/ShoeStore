@@ -4,19 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
+import com.udacity.shoestore.core.KeyValues
+import com.udacity.shoestore.core.extensions.getRandomImageKey
 import com.udacity.shoestore.databinding.FragmentProductEditorBinding
-import com.udacity.shoestore.databinding.FragmentProductsFeedBinding
+import com.udacity.shoestore.sharedpresentation.SharedViewModel
+import kotlinx.android.synthetic.main.fragment_product_editor.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
+import tech.jesselima.local.sqlite.data.shoes.models.Shoe
 
 
 class ProductEditorFragment : Fragment() {
 
     private lateinit var binding: FragmentProductEditorBinding
     private val viewModel by viewModel<ProductEditorViewModel>()
+    private val sharedViewModel by viewModel<SharedViewModel>()
+
+    private var shoe: Shoe? = null
+    private var isEditing = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +39,8 @@ class ProductEditorFragment : Fragment() {
             container,
             false
         )
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -35,29 +48,103 @@ class ProductEditorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
         setupListeners()
-    }
+        shoe = arguments?.getParcelable(KeyValues.KEY_SHOE) as Shoe?
+        viewModel.shoe.value = shoe
+
+        isEditing = shoe != null
+
+        if(isEditing) {
+            buttonSaveOrCreateShoe.text = getString(R.string.label_update)
+            textEditorLabelTile.text = getString(R.string.update_shoe)
+        } else {
+            textEditorLabelTile.text = getString(R.string.created_shoe)
+            buttonSaveOrCreateShoe.text = getString(R.string.save)
+        }
+     }
 
     private fun setupObservers() {
-        viewModel.shoesLiveData.observe(viewLifecycleOwner, { shoe ->
-            Timber.i(shoe.toString())
+        viewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
+            loadingSaveOrUpdate.isVisible = isLoading
         })
-        viewModel.isShoeSavedLiveData.observe(viewLifecycleOwner, { isShoeSaved ->
-            Timber.i(isShoeSaved.toString())
+        viewModel.newShoeId.observe(viewLifecycleOwner, { newShoeId ->
+            sharedViewModel.sharedShoeId.value = newShoeId.toLong()
+            val bundle = bundleOf(KeyValues.KEY_SHOE to newShoeId)
+            findNavController().navigate(R.id.navigateBackToShoeDetails, bundle)
         })
-        viewModel.isShoeUpdatedLiveData.observe(viewLifecycleOwner, { isShoeUpdated ->
-            Timber.i(isShoeUpdated.toString())
+        viewModel.isShoeUpdated.observe(viewLifecycleOwner, { isShoeUpdated ->
+            if (isShoeUpdated) {
+                Toast.makeText(context, getString(R.string.message_item_updated), Toast.LENGTH_SHORT).show()
+                val bundle = bundleOf(KeyValues.KEY_SHOE to shoe?.id?.toLong())
+                findNavController().navigate(R.id.navigateBackToShoeDetails, bundle)
+            } else {
+                Toast.makeText(context, getString(R.string.message_something_went_wrong), Toast.LENGTH_SHORT).show()
+            }
         })
-    }
-
-    fun getCurrentProduct() {
-        //val id = ProductEditorFragmentArgs
     }
 
     private fun setupListeners() {
-//        binding.buttonActionProductsFeed.setOnClickListener {
-//            findNavController().navigate(
-//                ProductsFeedFragmentDirections.actionProductsFeedFragmentToProductDetailsFragment()
-//            )
-//        }
+        toolbarShoeEditor.setNavigationOnClickListener {
+            if(isEditing) {
+                findNavController().navigate(
+                    R.id.navigateBackToShoeDetails,
+                    bundleOf(KeyValues.KEY_SHOE to shoe?.id?.toLong())
+                )
+            } else {
+                findNavController().navigate(R.id.navigateToProductsFeed)
+            }
+        }
+        buttonCancelEdit.setOnClickListener {
+            findNavController().navigate(
+                R.id.navigateBackToShoeDetails,
+                bundleOf(KeyValues.KEY_SHOE to shoe?.id)
+            )
+        }
+        buttonSaveOrCreateShoe.setOnClickListener {
+            if (shoe != null) {
+                shoe?.id?.let { shoeId ->
+                    viewModel.updateCurrentShoe(
+                        Shoe(id = shoeId,
+                            name = editTextName.text.toString(),
+                            brand = editTextBrand.text.toString(),
+                            price = formatPrice(editTextPrice.text.toString()),
+                            season = editTextSeason.text.toString(),
+                            year = editTextYear.text.toString().toInt(),
+                            category = editTextCategory.text.toString(),
+                            isHotSelling = switchIsHotSelling.isChecked,
+                            stockQuantity = formatQuantity(editTextStockQuantity.text.toString()),
+                            quantitySold = formatQuantity(editTextQuantitySold.text.toString()),
+                            image = getRandomImageKey()
+                        )
+                    )
+                }
+            } else {
+                viewModel.saveNewShoe(
+                    Shoe(
+                        name = editTextName.text.toString(),
+                        brand = editTextBrand.text.toString(),
+                        price = formatPrice(editTextPrice.text.toString()),
+                        season = editTextSeason.text.toString(),
+                        year = editTextYear.text.toString().toInt(),
+                        category = editTextCategory.text.toString(),
+                        isHotSelling = switchIsHotSelling.isChecked,
+                        stockQuantity = formatQuantity(editTextStockQuantity.text.toString()),
+                        quantitySold = formatQuantity(editTextQuantitySold.text.toString()),
+                        image = getRandomImageKey()
+                    )
+                )
+            }
+        }
+    }
+}
+
+fun formatQuantity(value: String?): Int {
+    return value?.toInt() ?: 0
+}
+
+fun formatPrice(value: String?): Float {
+    return if (value != null) {
+        String.format("%.3f", value.toFloat()).toFloat()
+    } else {
+        0f
     }
 }
