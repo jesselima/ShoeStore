@@ -57,11 +57,8 @@ class LoginFragment : Fragment() {
         })
         viewModel.isSavingSampleDataLiveData.observe(viewLifecycleOwner, { isSavingSampleData ->
             saveSampleDataLoading.isVisible = isSavingSampleData
-            if (isSavingSampleData.not()) {
-                Toast.makeText(context, getString(R.string.message_sample_data_saved), Toast.LENGTH_SHORT).show()
-            }
         })
-        viewModel.hasSampleAlreadyDataLiveData.observe(viewLifecycleOwner, { hasSampleData ->
+        viewModel.hasSampleData.observe(viewLifecycleOwner, { hasSampleData ->
             buttonInsertShoes.isVisible = hasSampleData.not()
         })
     }

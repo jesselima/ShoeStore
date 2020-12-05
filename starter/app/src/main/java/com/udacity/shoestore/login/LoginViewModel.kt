@@ -19,6 +19,7 @@ import timber.log.Timber
  */
 private const val FAKE_LOGIN_DELAY = 5000L
 private const val KEY_HAS_SAMPLE_DATA = "HAS_SAMPLE_DATA"
+private const val KEY_IS_AUTHENTICATED = "KEY_IS_AUTHENTICATED"
 
 class LoginViewModel(
     private val shoesLocalRepository: ShoesLocalRepository,
@@ -26,15 +27,7 @@ class LoginViewModel(
 ): ViewModel() {
 
     private val _hasSampleDataMutableLiveData = MutableLiveData<Boolean>()
-    val hasSampleAlreadyDataLiveData: LiveData<Boolean> = _hasSampleDataMutableLiveData
-
-    init {
-        _hasSampleDataMutableLiveData.value = checkIfHasSampleData()
-    }
-
-    private fun checkIfHasSampleData(): Boolean? {
-        return sharedPrefUserStorage.getBooleanValue(KEY_HAS_SAMPLE_DATA) ?: false
-    }
+    val hasSampleData: LiveData<Boolean> = _hasSampleDataMutableLiveData
 
     private val _isLoggedInMutableLiveData = MutableLiveData<Boolean>()
     val isLoginSuccess: LiveData<Boolean> = _isLoggedInMutableLiveData
@@ -44,6 +37,15 @@ class LoginViewModel(
 
     private val _isSavingSampleDataMutableLiveData = MutableLiveData<Boolean>()
     val isSavingSampleDataLiveData: LiveData<Boolean> = _isSavingSampleDataMutableLiveData
+
+
+    init {
+        hasSampleShoesOnDatabase()
+    }
+
+    private fun isAuthenticated(): Boolean? {
+        return sharedPrefUserStorage.getBooleanValue(KEY_IS_AUTHENTICATED) ?: false
+    }
 
     fun authenticateUser(email: String, password: String) {
         _isLoadingMutableLiveData.value = true
@@ -68,22 +70,22 @@ class LoginViewModel(
                     shoesLocalRepository.insertShoe(it)
                 }
             }
-            sharedPrefUserStorage.saveValue(KEY_HAS_SAMPLE_DATA, value = true)
             _isSavingSampleDataMutableLiveData.value = false
+            _hasSampleDataMutableLiveData.value = true
         }
     }
 
-    private fun logAllShoes() {
+    private fun hasSampleShoesOnDatabase() {
         viewModelScope.launch {
             val allShoes = withContext(Dispatchers.IO) {
                 shoesLocalRepository.getAllShoes()
             }
-            allShoes.forEach {
-                Timber.i("\n$it)")
-            }
+            _isSavingSampleDataMutableLiveData.value = false
+            _hasSampleDataMutableLiveData.value = allShoes.isNotEmpty()
         }
     }
 
+    // Sample Data for testes only
     private val shoes = listOf(
         Shoe(
             name = "Boot Extreme",
