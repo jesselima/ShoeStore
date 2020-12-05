@@ -65,14 +65,19 @@
         <action
             android:id="@+id/navigateToProductDetails"
             app:destination="@id/productDetailsFragment"
+            app:launchSingleTop="true"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/slide_out_left"
-            app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/fade_out"/>
         <action
             android:id="@+id/navigateFromFeedToShoeEditor"
-            app:destination="@id/productEditorFragment" />
+            app:destination="@id/productEditorFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/fade_out"/>
     </fragment>
 
     <fragment
@@ -83,15 +88,22 @@
         <action
             android:id="@+id/navigateBackToProductsFeed"
             app:destination="@id/productsFeedFragment"
-            app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/fade_out"
-            app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/productsFeedFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popExitAnim="@anim/slide_out_right"
+            />
         <action
             android:id="@+id/navigateToProductEditor"
-            app:destination="@id/productEditorFragment" />
+            app:destination="@id/productEditorFragment"
+            app:popUpTo="@id/productDetailsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/productEditorFragment"
@@ -101,7 +113,21 @@
         <action
             android:id="@+id/navigateBackToShoeDetails"
             app:destination="@id/productDetailsFragment"
-            app:popUpTo="@id/productDetailsFragment"/>
+            app:popUpTo="@id/productDetailsFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/fade_out"
+            app:popExitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/navigateToProductsFeed"
+            app:destination="@id/productsFeedFragment"
+            app:popUpTo="@id/productsFeedFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/fade_out"
+            app:popExitAnim="@anim/fade_out"/>
     </fragment>
 
 </navigation>
