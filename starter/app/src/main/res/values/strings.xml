@@ -83,4 +83,5 @@
     <string name="instructions_item_5">• All items are store offline.</string>
     <string name="instructions_item_6">• Use de Top Seller option to group relevant shoes at the top of the list.</string>
     <string name="label_remember">Remember:</string>
+    <string name="welcome_message">Welcome to the Shoe Store. \nHere you will be able to manage your shoes sales and control you shoes stock.</string>
 </resources>
