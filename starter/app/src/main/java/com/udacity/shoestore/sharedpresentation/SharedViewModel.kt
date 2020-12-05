@@ -8,5 +8,5 @@ import androidx.lifecycle.ViewModel
  * This is a part of the project ShoeStore.
  */
 class SharedViewModel: ViewModel() {
-    val sharedShoeId = MutableLiveData<Int>()
+    val sharedShoeId = MutableLiveData<Long>()
 }

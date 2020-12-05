@@ -21,7 +21,7 @@ class ShoeDefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), 
     }
 
     override fun onClick(v: View?) {
-        val bundle = bundleOf(KEY_SHOE to shoe?.id)
+        val bundle = bundleOf(KEY_SHOE to shoe?.id?.toLong())
         view.findNavController().navigate(R.id.navigateToProductDetails, bundle)
     }
 
@@ -30,6 +30,8 @@ class ShoeDefaultViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), 
         view.textShoeName.text = shoe.name
         view.textShoeBrand.text = shoe.name
         view.textShoePrice.text = view.context.getString(R.string.price_format, String.format("%.2f", shoe.price))
-        view.imageShoeItem.setImageResource(mapStringToImageResource(shoe.image))
+        shoe.image?.let {
+            view.imageShoeItem.setImageResource(it.mapStringToImageResource())
+        }
     }
 }

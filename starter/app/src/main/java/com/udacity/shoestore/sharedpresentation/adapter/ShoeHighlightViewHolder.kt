@@ -21,7 +21,7 @@ class ShoeHighlightViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     }
 
     override fun onClick(v: View?) {
-        val bundle = bundleOf(KEY_SHOE to shoe?.id)
+        val bundle = bundleOf(KEY_SHOE to shoe?.id?.toLong())
         view.findNavController().navigate(R.id.navigateToProductDetails, bundle)
     }
 
@@ -30,6 +30,8 @@ class ShoeHighlightViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
         view.textShoeNameHotSelling.text = shoe.name
         view.textShoeBrandHotSelling.text = shoe.brand
         view.textShoePriceHotSelling.text =  view.context.getString(R.string.price_format, String.format("%.2f", shoe.price))
-        view.imageShoeHighlightedItem.setImageResource(mapStringToImageResource(shoe.image))
+        shoe.image?.let {
+            view.imageShoeHighlightedItem.setImageResource(it.mapStringToImageResource())
+        }
     }
 }

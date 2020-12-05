@@ -40,8 +40,8 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false) 
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
 }
 
-fun mapStringToImageResource(value: String?) : Int {
-    return when(value) {
+fun String.mapStringToImageResource() : Int {
+    return when(this) {
         "model_shoe_01" -> R.drawable.model_shoe_01
         "model_shoe_02" -> R.drawable.model_shoe_02
         "model_shoe_03" -> R.drawable.model_shoe_03
