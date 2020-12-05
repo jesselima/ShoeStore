@@ -48,6 +48,12 @@
     <string name="great">Great!</string>
     <string name="shoe_image_item">Shoe Image Item</string>
     <string name="top_seller">Top \nSeller</string>
+    <string name="label_login">LOGIN</string>
+    <string name="label_welcome">WELCOME</string>
+    <string name="label_instructions">INSTRUCTIONS</string>
+    <string name="label_feed">FEED</string>
+    <string name="label_shoe_details">SHOE DETAILS</string>
+    <string name="label_shoe_editor">SHOE EDITOR</string>
     <string name="label_shoe_name">Name</string>
     <string name="label_brand">Brand</string>
     <string name="label_price">Price</string>
