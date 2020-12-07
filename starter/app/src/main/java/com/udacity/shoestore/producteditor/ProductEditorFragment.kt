@@ -93,43 +93,60 @@ class ProductEditorFragment : Fragment() {
                 findNavController().navigate(R.id.navigateToProductsFeed)
             }
         }
+
         buttonCancelEdit.setOnClickListener {
-            findNavController().navigate(
-                R.id.navigateBackToShoeDetails,
-                bundleOf(KeyValues.KEY_SHOE to shoe?.id)
-            )
+            if (shoe?.id == null) {
+                findNavController().navigate(R.id.navigateToProductsFeed)
+            } else {
+                findNavController().navigate(
+                    R.id.navigateBackToShoeDetails,
+                    bundleOf(KeyValues.KEY_SHOE to shoe?.id?.toLong())
+                )
+            }
         }
+
         buttonSaveOrCreateShoe.setOnClickListener {
+            val name = editTextName.text.toString()
+            val brand = editTextBrand.text.toString()
+            val price = formatPrice(editTextPrice.text.toString())
+            val season = editTextSeason.text.toString()
+            val year = editTextYear.text.toString().toInt()
+            val category = editTextCategory.text.toString()
+            val isHotSelling = switchIsHotSelling.isChecked
+            val stockQuantity = formatQuantity(editTextStockQuantity.text.toString())
+            val quantitySold = formatQuantity(editTextQuantitySold.text.toString())
+            val image = getRandomImageKey()
+
             if (shoe != null) {
                 shoe?.id?.let { shoeId ->
                     viewModel.updateCurrentShoe(
                         Shoe(id = shoeId,
-                            name = editTextName.text.toString(),
-                            brand = editTextBrand.text.toString(),
-                            price = formatPrice(editTextPrice.text.toString()),
-                            season = editTextSeason.text.toString(),
-                            year = editTextYear.text.toString().toInt(),
-                            category = editTextCategory.text.toString(),
-                            isHotSelling = switchIsHotSelling.isChecked,
-                            stockQuantity = formatQuantity(editTextStockQuantity.text.toString()),
-                            quantitySold = formatQuantity(editTextQuantitySold.text.toString()),
-                            image = getRandomImageKey()
+                            name = name,
+                            brand = brand,
+                            price = price,
+                            season = season,
+                            year = year,
+                            category = category,
+                            isHotSelling = isHotSelling,
+                            stockQuantity = stockQuantity,
+                            quantitySold = quantitySold,
+                            image = image
                         )
                     )
                 }
             } else {
                 viewModel.saveNewShoe(
                     Shoe(
-                        name = editTextName.text.toString(),
-                        brand = editTextBrand.text.toString(),
-                        price = formatPrice(editTextPrice.text.toString()),
-                        season = editTextSeason.text.toString(),
-                        year = editTextYear.text.toString().toInt(),
-                        category = editTextCategory.text.toString(),
-                        isHotSelling = switchIsHotSelling.isChecked,
-                        stockQuantity = formatQuantity(editTextStockQuantity.text.toString()),
-                        quantitySold = formatQuantity(editTextQuantitySold.text.toString()),
-                        image = getRandomImageKey()
+                        name = name,
+                        brand = brand,
+                        price = price,
+                        season = season,
+                        year = year,
+                        category = category,
+                        isHotSelling = isHotSelling,
+                        stockQuantity = stockQuantity,
+                        quantitySold = quantitySold,
+                        image = image
                     )
                 )
             }

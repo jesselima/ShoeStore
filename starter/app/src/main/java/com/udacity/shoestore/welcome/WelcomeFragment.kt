@@ -8,12 +8,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
+import com.udacity.shoestore.core.KeyValues
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
+import org.koin.android.ext.android.inject
+import tech.jesselima.local.sharedpref.data.SharedPrefUserStorage
 
 
 class WelcomeFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomeBinding
+
+    private val sharedPrefUserStorage: SharedPrefUserStorage by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,22 +30,13 @@ class WelcomeFragment : Fragment() {
             container,
             false
         )
-        setupViewModel()
-        setupObservers()
         setupListeners()
         return binding.root
     }
 
-    private fun setupViewModel() {
-        // TODO("not implemented")
-    }
-
-    private fun setupObservers() {
-        // TODO("not implemented")
-    }
-
     private fun setupListeners() {
         binding.buttonActionFromWelcome.setOnClickListener {
+            sharedPrefUserStorage.saveValue(KeyValues.KEY_HAVE_SEEN_WELCOME, true)
             findNavController().navigate(
                 WelcomeFragmentDirections.navigateToInstructions()
             )

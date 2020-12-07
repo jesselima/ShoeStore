@@ -12,7 +12,7 @@ import com.udacity.shoestore.R
 fun Fragment.showDialogWithOptionalActions(
         context: Context,
         title: String,
-        message: String,
+        message: String = "",
         positiveButtonText: String = resources.getString(R.string.label_ok),
         positiveButtonAction: (() -> Unit?)? = null,
         negativeButtonText: String = resources.getString(R.string.label_cancel),
@@ -26,6 +26,22 @@ fun Fragment.showDialogWithOptionalActions(
         }
         .setNegativeButton(negativeButtonText) { _, _ ->
             negativeButtonAction?.invoke()
+        }
+        .show()
+}
+
+fun Fragment.showDialog(
+    context: Context,
+    title: String = resources.getString(R.string.attention),
+    message: String = "",
+    positiveButtonText: String = resources.getString(R.string.label_ok),
+    positiveButtonAction: (() -> Unit?)? = null,
+) {
+    MaterialAlertDialogBuilder(context)
+        .setTitle(title)
+        .setMessage(message)
+        .setPositiveButton(positiveButtonText) { _, _ ->
+            positiveButtonAction?.invoke()
         }
         .show()
 }

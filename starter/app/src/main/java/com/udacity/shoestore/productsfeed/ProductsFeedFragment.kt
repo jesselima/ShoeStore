@@ -1,15 +1,14 @@
 package com.udacity.shoestore.productsfeed
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.udacity.shoestore.R
+import com.udacity.shoestore.core.extensions.showDialogWithOptionalActions
 import com.udacity.shoestore.databinding.FragmentProductsFeedBinding
 import com.udacity.shoestore.sharedpresentation.adapter.ShoeAdapter
 import kotlinx.android.synthetic.main.fragment_products_feed.*
@@ -32,6 +31,7 @@ class ProductsFeedFragment : Fragment() {
             container,
             false
         )
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -45,6 +45,15 @@ class ProductsFeedFragment : Fragment() {
     private fun setupListeners() {
         feedButtonAddNewShoe.setOnClickListener {
             findNavController().navigate(R.id.navigateFromFeedToShoeEditor)
+        }
+        topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menuActionLogout -> {
+                    showLogoutConfirmationDialog()
+                    true
+                }
+                else -> false
+            }
         }
     }
 
@@ -66,9 +75,26 @@ class ProductsFeedFragment : Fragment() {
         })
 
         viewModel.allShoesLiveData.observe(viewLifecycleOwner, { allShoes ->
-            groupFeedMainContent.isVisible = allShoes.isNotEmpty()
+            recyclerViewShoesGeneralList.isVisible = allShoes.isNotEmpty()
             groupFeedNoShoesFound.isVisible = allShoes.isEmpty()
             adapterShoes.submitList(allShoes)
         })
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        context?.let {
+            showDialogWithOptionalActions(
+                context = it,
+                title = getString(R.string.message_logout),
+                positiveButtonText = getString(R.string.label_logout),
+                positiveButtonAction = {
+                    logout()
+                }
+            )
+        }
+    }
+    private fun logout() {
+        findNavController().navigate(R.id.navigateFromFeedToLogin)
+        viewModel.logout()
     }
 }

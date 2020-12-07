@@ -12,7 +12,10 @@ import org.koin.dsl.module
 object ProductsFeedModule {
    private val productFeedModule = module {
         viewModel {
-            ProductsFeedViewModel(shoesLocalRepository = get())
+            ProductsFeedViewModel(
+                shoesLocalRepository = get(),
+                sharedPrefUserStorage = get()
+            )
         }
     }
 

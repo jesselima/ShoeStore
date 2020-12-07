@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.udacity.shoestore.core.KeyValues
 import com.udacity.shoestore.shareddata.datasorce.local.repository.ShoesLocalRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import tech.jesselima.local.sharedpref.data.SharedPrefUserStorage
 import tech.jesselima.local.sqlite.data.shoes.models.Shoe
 import timber.log.Timber
 
@@ -16,7 +18,8 @@ import timber.log.Timber
  * This is a part of the project ShoeStore.
  */
 class ProductsFeedViewModel(
-    private val shoesLocalRepository: ShoesLocalRepository
+    private val shoesLocalRepository: ShoesLocalRepository,
+    private val sharedPrefUserStorage: SharedPrefUserStorage
 ): ViewModel() {
 
     private val _isLoadingMutableLiveData = MutableLiveData<Boolean>()
@@ -39,5 +42,9 @@ class ProductsFeedViewModel(
             _allShoesMutableLiveData.value = result
             Timber.d(result.toString())
         }
+    }
+
+    fun logout() {
+        sharedPrefUserStorage.saveValue(KeyValues.KEY_IS_AUTHENTICATED, false)
     }
 }

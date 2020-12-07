@@ -14,8 +14,9 @@
     <dimen name="cardElevation_high">8dp</dimen>
 
     <dimen name="text_size_default">16sp</dimen>
-    <dimen name="lottie_loading_animation">250dp</dimen>
+    <dimen name="lottie_loading_animation">200dp</dimen>
     <dimen name="none">0dp</dimen>
     <dimen name="product_detail_label_width">150dp</dimen>
     <dimen name="button_height_default">50dp</dimen>
+    <dimen name="margin_top_for_app_bar">56dp</dimen>
 </resources>

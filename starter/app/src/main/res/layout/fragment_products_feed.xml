@@ -8,43 +8,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/shoes_store"
+                app:menu="@menu/main_menu"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/layout_margin_default"
-            android:layout_marginStart="@dimen/layout_margin_default"
-            android:layout_marginEnd="@dimen/layout_margin_default"
-            tools:context=".productsfeed.ProductsFeedFragment">
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/groupFeedMainContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                tools:visibility="visible"
-                app:constraint_referenced_ids="labelAllShoes,recyclerViewShoesGeneralList,labelAllShoes"/>
-
-            <TextView
-                android:id="@+id/labelAllShoes"
-                style="@style/TextAppearance.MaterialComponents.Headline5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/shoes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="@dimen/margin_top_for_app_bar">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewShoesGeneralList"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/layout_margin_default"
-                android:layout_marginBottom="@dimen/layout_margin_default"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/labelAllShoes"
+                android:layout_height="match_parent"
+                tools:visibility="gone"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_list_shoe" />
 
@@ -53,7 +40,7 @@
                 android:layout_width="@dimen/lottie_loading_animation"
                 android:layout_height="@dimen/lottie_loading_animation"
                 android:layout_gravity="center"
-                tools:visibility="gone"
+                tools:visibility="visible"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,13 +50,20 @@
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/loading_indicator"/>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/groupFeedNoShoesFound"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                tools:visibility="gone"
-                app:constraint_referenced_ids="noShoesFoundAnimation,labelNoShoesFound"/>
+                app:constraint_referenced_ids="noShoesFoundAnimation,labelNoShoesFound"
+                tools:visibility="gone" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/noShoesFoundAnimation"
@@ -85,14 +79,16 @@
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/footprint"
-                tools:visibility="gone" />
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/labelNoShoesFound"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="@dimen/layout_margin_extra"
                 android:visibility="gone"
+                tools:visibility="visible"
+                android:textSize="20sp"
                 android:gravity="center_horizontal"
                 android:text="@string/noe_shoes_found_message"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,8 +107,5 @@
             app:srcCompat="@drawable/ic_add"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
 
 </layout>

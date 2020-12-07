@@ -6,4 +6,7 @@ package com.udacity.shoestore.core
  */
 object KeyValues {
     const val KEY_SHOE = "KEY_SHOE"
+    const val KEY_IS_AUTHENTICATED = "KEY_IS_AUTHENTICATED"
+    const val KEY_HAVE_SEEN_INTRO = "KEY_HAVE_SEEN_INTRO"
+    const val KEY_HAVE_SEEN_WELCOME = "KEY_HAVE_SEEN_WELCOME"
 }

@@ -84,4 +84,8 @@
     <string name="instructions_item_6">• Use de Top Seller option to group relevant shoes at the top of the list.</string>
     <string name="label_remember">Remember:</string>
     <string name="welcome_message">Welcome to the Shoe Store. \nHere you will be able to manage your shoes sales and control you shoes stock.</string>
+    <string name="label_logout">Logout</string>
+    <string name="shoes_store">Shoe Store</string>
+    <string name="message_logout">Exit the app?</string>
+    <string name="message_login_form_error">Please, check your email or password.</string>
 </resources>
